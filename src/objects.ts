@@ -145,11 +145,12 @@ function addSecondAuthor(book: Book, additionalAuthor: string): Book {
   // write your code here...
   if (Array.isArray(book.author)) {
     book.author.push(additionalAuthor);
-  } else if (book.author) {
-    book.author = [book.author, additionalAuthor];
   } else {
-    book.author = [additionalAuthor];
+    book.author = book.author
+      ? [book.author, additionalAuthor]
+      : [additionalAuthor];
   }
+
   return book;
 }
 
